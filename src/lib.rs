@@ -24,8 +24,6 @@ pub enum OSType {
     OpenSUSE,
     Alpine,
     Deepin,
-    PopOS,
-    Mint
 }
 
 /// Holds information about Operating System type and its version
@@ -81,7 +79,7 @@ fn lsb_release() -> OSInformation {
                     os_type: OSType::Debian,
                     version: release.version.unwrap_or(default_version())
                 }
-            } else if release.distro == Some("Arch".to_string()) || release.distro == Some("Garuda".to_string()) {
+            } else if release.distro == Some("Arch".to_string()) {
                 OSInformation {
                     os_type: OSType::Arch,
                     version: release.version.unwrap_or(default_version())
@@ -101,16 +99,6 @@ fn lsb_release() -> OSInformation {
             else if release.distro == Some("openSUSE".to_string()) {
                 OSInformation {
                     os_type: OSType::OpenSUSE,
-                    version: release.version.unwrap_or(default_version())
-                }
-            } else if release.distro == Some("Pop".to_string()) {
-                OSInformation {
-                    os_type: OSType::PopOS,
-                    version: release.version.unwrap_or(default_version())
-                }
-            } else if release.distro == Some("Linuxmint".to_string()) {
-                OSInformation {
-                    os_type: OSType::Mint,
                     version: release.version.unwrap_or(default_version())
                 }
             }
